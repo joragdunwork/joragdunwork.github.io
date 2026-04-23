@@ -1,4 +1,3 @@
-/* RESET Y BASES */
 :root {
     --primary: #00d2ff;
     --secondary: #f53900;
@@ -8,7 +7,7 @@
 
 * {
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; /* Quita el cuadro azul feo al tocar en Android/iOS */
+    -webkit-tap-highlight-color: transparent; 
 }
 
 h1 {
@@ -20,7 +19,7 @@ h1 {
 }
 
 h2 {
-    color: #ffffff; /* Un azul cyan tecnológico */
+    color: #ffffff; 
     font-weight: 600;
 }
 
@@ -34,23 +33,24 @@ span {
 
 body {
     margin: 0;
-    padding: 15px; /* Menos espacio en las orillas para ganar pantalla */
+    padding: 15px; 
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(7, 42, 52, 0.8)), 
                 url('https://img.freepik.com/premium-vector/pattern-videogames_693527-6.jpg');
-    background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* La imagen no se mueve al hacer scroll */
+    background-attachment: fixed; 
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Empieza desde arriba para que no se corte en pantallas cortas */
-    min-height: 100vh;
+    align-items: flex-start; 
 }
 
-/* LA TARJETA EN MÓVIL */
+.main-container {
+    width: 100%;
+    max-width: 500px; 
+}
+
 .card {
     width: 100%;
-    max-width: 400px; /* En PC no se verá gigante */
     background: var(--glass);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -61,7 +61,7 @@ body {
     text-align: center;
 }
 
-/* FOTO DE PERFIL MÁS IMPACTANTE */
+
 .profile-img {
     width: 110px;
     height: 110px;
@@ -69,15 +69,62 @@ body {
     border: 3px solid var(--primary);
     object-fit: cover;
     margin-bottom: 15px;
+    
+    animation: zoomInAppearance 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    
+    box-shadow: 0 0 0 rgba(0, 210, 255, 0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* BOTONES TIPO "APP" (ZONA TÁCTIL GRANDE) */
+.profile-img:hover, .profile-img:active {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 20px var(--primary);
+    border-color: var(--secondary);
+}
+
+
+@keyframes zoomInAppearance {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-45deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+
+.profile-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+    animation: pulseNeon 2s infinite;
+    z-index: -1;
+    opacity: 0;
+}
+
+@keyframes pulseNeon {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+
 .link-item {
     display: flex;
     align-items: center;
     background: rgba(255, 255, 255, 0.05);
     margin-bottom: 12px;
-    padding: 18px; /* Aumentamos el padding para los dedos */
+    padding: 18px; 
     border-radius: 16px;
     text-decoration: none;
     color: white;
@@ -86,7 +133,7 @@ body {
     border: 1px solid transparent;
 }
 
-.link-item:active { /* Efecto de presión al tocar */
+.link-item:active { 
     transform: scale(0.96);
     background: rgba(255, 255, 255, 0.1);
 }
@@ -98,15 +145,15 @@ body {
     color: var(--primary);
 }
 
-/* PORTAFOLIO EN MÓVIL */
+
 .portfolio-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 columnas en celular */
+    grid-template-columns: 1fr 1fr; 
     gap: 10px;
 }
 
 .portfolio-item img {
-    width: 100%;
+    width: 200%;
     border-radius: 12px;
     display: block;
 }
@@ -121,12 +168,162 @@ body {
 }
 
 .portfolio-section {
+    width: 100%;
+    margin-top: 20px;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
+    transition: opacity 0.5s ease;
+    display: none;}
 
-/* Esta clase la pondremos con JavaScript para mostrarlo */
 .portfolio-section.show {
     display: block;
     opacity: 1;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: auto auto; 
+    width: 100%;
+    height: auto;
+    gap: 15px;
+}
+
+.gallery-item {
+    position: relative;
+    height: 200px; 
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.25, 0.4, 0.45, 1.4); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.gallery-item.active {
+    grid-column: span 2; 
+    height: 300px; 
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+    transition: 0.5s;
+}
+
+.gallery-item.active img {
+    filter: brightness(1);
+}
+
+
+.item-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); 
+    text-align: left;
+    opacity: 0; 
+    transition: opacity 0.4s ease;
+}
+
+.gallery-item.active .item-content {
+    opacity: 1;
+}
+
+.item-content h3 {
+    font-size: 1rem;
+    color: var(--primary);
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+}
+
+.item-description p {
+    font-size: 0.75rem;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0;
+    white-space: normal; 
+}
+
+.skills-section {
+    width: 100%;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: none; 
+}
+
+.skills-section.show {
+    display: block;
+    opacity: 1;
+}
+
+.skills-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.skill-item {
+    background: rgba(0, 210, 255, 0.05);
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    border-radius: 16px;
+    padding: 18px;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    background: rgba(0, 210, 255, 0.1);
+    border-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+.skill-item h3 {
+    font-size: 1rem;
+    color: var(--primary);
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.skill-item p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+    margin: 0 0 12px 0;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    display: inline-block;
+    background: rgba(0, 210, 255, 0.2);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
 }
