@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARPI | Tu Tarjeta Inteligente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="card">
+            <div class="profile-container">
+                <img src="https://static.wikitide.net/deathbattlewiki/4/43/Portrait.doomslayer.png" alt="Usuario" class="profile-img">
+            </div>
+            
+            <h1>Jorge Aguilar</h1>
+            <p class="title-job">Web Developer & Design</p>
+
+            <div class="links-grid">
+                <a href="https://wa.me/5510267505?text=Hola!%20Me%20interesa%20el%20proyecto" target="_blank" rel="noopener noreferrer" class="link-item link-whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                
+          <a href="javascript:void(0)" onclick="togglePortfolio()" class="link-item" id="btn-portfolio">
+    <i class="fas fa-briefcase"></i> Ver Portafolio
+</a>
+
+                <a href="mailto:jpqgost@hotmail.com?subject=Hola!%20Me%20interesa%20el%20proyecto" class="link-item">
+                    <i class="fas fa-envelope"></i> Enviar Correo
+                </a>
+
+                <a href="https://instagram.com/tu_usuario" target="_blank" rel="noopener noreferrer" class="link-item">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+
+              <a href="tel:+525510267505" class="link-item" style="border-color: var(--primary);">
+                    <i class="fas fa-mobile-alt"></i> Línea Directa
+              </a>
+            </div>
+        </div>
+
+<div id="mi-portafolio" class="card portfolio-section">
+    <h2>Mis Proyectos</h2>
+    <div class="portfolio-grid">
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://picsum.photos/400/400?random=1" alt="Proyecto 1">
+                    <span>Web Design</span>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://picsum.photos/400/400?random=2" alt="Proyecto 2">
+                    <span>E-commerce</span>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://picsum.photos/400/400?random=3" alt="Proyecto 3">
+                    <span>Branding</span>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://picsum.photos/400/400?random=4" alt="Proyecto 4">
+                    <span>App UI</span>
+                </div>
+            </div>
+
+            <a href="#" class="back-up">
+                <i class="fas fa-arrow-up"></i> Volver arriba
+            </a>
+        </div>
+
+    
+    </div>
+
+        <div class="jdesign-footer">
+            JDseign • DIGITAL CARD 2026
+        </div>
+
+    <script>
+function togglePortfolio() {
+    const portfolio = document.getElementById('mi-portafolio');
+    const btn = document.getElementById('btn-portfolio');
+
+    // Si está oculto, lo muestra. Si está visible, lo oculta.
+    if (portfolio.classList.contains('show')) {
+        portfolio.classList.remove('show');
+        btn.innerHTML = '<i class="fas fa-briefcase"></i> Ver Portafolio';
+    } else {
+        portfolio.classList.add('show');
+        btn.innerHTML = '<i class="fas fa-times"></i> Cerrar Portafolio';
+        
+        // Scroll suave hacia el portafolio cuando se abre
+        setTimeout(() => {
+            portfolio.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    }
+}
+</script>
+</body>
+</html>

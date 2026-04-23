@@ -1,0 +1,133 @@
+/* RESET Y BASES */
+:root {
+    --primary: #00d2ff;
+    --secondary: #f53900;
+    --bg-dark: #20c0cb;
+    --glass: rgba(255, 255, 255, 0.151);
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Quita el cuadro azul feo al tocar en Android/iOS */
+}
+
+h1 {
+  font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+   color: #ffffff;
+}
+
+h2 {
+    color: #ffffff; /* Un azul cyan tecnológico */
+    font-weight: 600;
+}
+
+p {
+    color: #ffffff
+}
+
+span {
+    color: #ffffff;
+}
+
+body {
+    margin: 0;
+    padding: 15px; /* Menos espacio en las orillas para ganar pantalla */
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(7, 42, 52, 0.8)), 
+                url('https://img.freepik.com/premium-vector/pattern-videogames_693527-6.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* La imagen no se mueve al hacer scroll */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Empieza desde arriba para que no se corte en pantallas cortas */
+    min-height: 100vh;
+}
+
+/* LA TARJETA EN MÓVIL */
+.card {
+    width: 100%;
+    max-width: 400px; /* En PC no se verá gigante */
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 30px;
+    padding: 30px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+/* FOTO DE PERFIL MÁS IMPACTANTE */
+.profile-img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* BOTONES TIPO "APP" (ZONA TÁCTIL GRANDE) */
+.link-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 12px;
+    padding: 18px; /* Aumentamos el padding para los dedos */
+    border-radius: 16px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: transform 0.2s;
+    border: 1px solid transparent;
+}
+
+.link-item:active { /* Efecto de presión al tocar */
+    transform: scale(0.96);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.link-item i {
+    font-size: 1.4rem;
+    margin-right: 15px;
+    width: 25px;
+    color: var(--primary);
+}
+
+/* PORTAFOLIO EN MÓVIL */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columnas en celular */
+    gap: 10px;
+}
+
+.portfolio-item img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+}
+
+.jdesign-footer {
+    margin-top: 40px;
+    font-size: 0.7rem;
+    opacity: 0.4;
+    letter-spacing: 3px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.portfolio-section {
+    display: none; /* Lo oculta por completo al cargar */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Esta clase la pondremos con JavaScript para mostrarlo */
+.portfolio-section.show {
+    display: block;
+    opacity: 1;
+}
