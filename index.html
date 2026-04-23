@@ -163,7 +163,7 @@ function togglePortfolio() {
         portfolio.classList.add('show');
         btn.innerHTML = '<i class="fas fa-times"></i> Cerrar';
         
-        // Scroll suave
+       
         setTimeout(() => {
             portfolio.scrollIntoView({ behavior: 'smooth' });
         }, 100);
@@ -182,7 +182,7 @@ function toggleSkills() {
         skills.classList.add('show');
         btn.innerHTML = '<i class="fas fa-times"></i> Cerrar';
         
-        // Scroll suave
+       
         setTimeout(() => {
             skills.scrollIntoView({ behavior: 'smooth' });
         }, 100);
@@ -194,8 +194,11 @@ const items = document.querySelectorAll('.gallery-item');
 
 items.forEach(item => {
     item.addEventListener('click', () => {
+       
         items.forEach(i => i.classList.remove('active'));
+        
         item.classList.add('active');
+        
         
         if (window.navigator.vibrate) {
             window.navigator.vibrate(10);
