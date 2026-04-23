@@ -115,6 +115,7 @@ body {
     animation: pulseNeon 2s infinite;
     z-index: -1;
     opacity: 0;
+    box-sizing: border-box;
 }
 
 @keyframes pulseNeon {
